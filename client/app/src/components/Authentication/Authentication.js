@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StatusBar } from 'react-native';
 
 StatusBar.setHidden(true);
 
-export default class Authentication extends Component{
-    render(){
-        return(
-            <View style={{flex: 1, backgroundColor: 'blue'}}>
+export default class Authentication extends Component {
+    render() {
+        return (
+            <View style={{ flex: 1, backgroundColor: 'blue' }}>
                 <Text>Authentication Component</Text>
             </View>
         );
