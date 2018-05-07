@@ -1,36 +1,33 @@
 import { StackNavigator, TabBarBottom, TabNavigator } from 'react-navigation';
 
-import Authentication from '../Authentication/Authentication';
-import Main from '../Main/Main';
-import ChangeInfo from '../ChangeInfo/ChangeInfo';
-import OrderHistory from '../OrderHistory/OrderHistory';
+import Cart from './Cart/Cart';
+import Search from './Search/Search';
+import Home from './Home/Home';
+import Contact from './Contact/Contact';
 
 export default Tabs = TabNavigator(
     {
-        Authentication: {
-            screen: Authentication
-        },
-        Main: {
-            screen: Main
-        },
-        ChangeInfo: {
-            screen: ChangeInfo
-        },
-        OrderHistory: {
-            screen: OrderHistory
-        },
+        Home: { screen: Home },
+        Cart: { screen: Cart },
+        Search: { screen: Search },
+        Contact: { screen: Contact }
     },
     {
-        initialRouteName: 'Main'
+        initialRouteName: 'Home'
     },
     {
         navigationOptions: ({ navigation }) => ({
             tabBarIcon: ({ focused, tintColor }) => {
                 const { routeName } = navigation.state;
                 let iconName;
-                if (routeName === 'Main') {
+                if (routeName === 'Home') {
                     iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-                } else if (routeName === 'ChangInfo') {
+                } else if (routeName === 'Cart') {
+                    iconName = `ios-options${focused ? '' : '-outline'}`;
+                } else if (routeName === 'Search') {
+                    iconName = `ios-options${focused ? '' : '-outline'}`;
+                }
+                else {
                     iconName = `ios-options${focused ? '' : '-outline'}`;
                 }
 
@@ -39,7 +36,6 @@ export default Tabs = TabNavigator(
                 return <Ionicons name={iconName} size={25} color={tintColor} />;
             },
         }),
-
         tabBarComponent: TabBarBottom,
         tabBarPosition: 'bottom',
         tabBarOptions: {

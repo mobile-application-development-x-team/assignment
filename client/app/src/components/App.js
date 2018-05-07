@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { StatusBar, View } from 'react-native';
+import { } from 'react-native';
 
-import Tabs from './Config/routes';
-
-StatusBar.setHidden(true);
+import Main from "./Main/Main";
+import Authentication from "./Authentication/Authentication";
+import ChangeInfo from "./ChangeInfo/ChangeInfo";
+import OrderHistory from "./OrderHistory/OrderHistory";
 
 export default class App extends Component {
     render() {
         return (
-            <Tabs />
+            <Main />
         );
     }
 }
