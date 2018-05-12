@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, Button, StatusBar, DrawerLayoutAndroid } from 'react-native';
+import {StackNavigator} from 'react-navigation';
 
 import Menu from "./Menu";
-import Tabs from './Shop/ConfigRoutes';
+import Shop from './Shop/Shop';
 
 StatusBar.setHidden(true);
 
 export default class Main extends Component {
+
+    
 
     loadingHome() {
         console.log('Loading Home');
@@ -61,7 +64,7 @@ export default class Main extends Component {
                 drawerPosition={DrawerLayoutAndroid.positions.Left}
                 renderNavigationView={() => navigationView}
             >
-                <Tabs />
+                <Shop />
             </DrawerLayoutAndroid>
         );
     }
