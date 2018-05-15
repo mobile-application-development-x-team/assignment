@@ -1,32 +1,26 @@
-var express = require("express");
-var mysql = require('mysql');
-
-var connection = mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'username',
-    password: '1234!@#',
-    insecureAuth: true
-});
-
+var mongoose = require('mongoose');
+var express = require('express');
 var app = express();
+var port = process.env.PORT || 8008;
+var bodyParser = require('body-parser');
+var cors = require('cors');
 
-connection.connect(function (err) {
-    if (!err) {
-        console.log("Database is connected ... nn");
-    } else {
-        throw err
-        console.log("Error connecting database ... nn");
-    }
+var url = 'mongodb://user:123456@ds157631.mlab.com:57631/shop';
+var User = require('./api/models/UserModel');
+
+mongoose.Promise = global.Promise;
+mongoose.connect(url,  (err) =>{
+    if(err)
+        console.error(err);
 });
 
-app.get("/", function (req, res) {
-    connection.query('SELECT * from tests LIMIT 2', function (err, rows, fields) {
-        connection.end();
-        if (!err)
-            console.log('The solution is: ', rows);
-        else
-            console.log('Error while performing Query.');
-    });
-});
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-app.listen(3000);
+var userRoute = require('./api/routes/UserRoute');
+userRoute(app);
+
+app.listen(port, () =>{
+    console.log('access http://localhost:' + port);
+})

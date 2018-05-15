@@ -1,6 +1,0 @@
-bills(id, id_customer, date_order. total, note, status)
-bill_detail(id, id_bill. id_product, quantity, price)
-images(id, link, id_product)
-products(id, name, id_type, price, color, material, description, new, inCollection)
-product_type(id, name, image)
-users(id, email, password, name, phone, address)

@@ -42,7 +42,7 @@ const Tabs = TabNavigator(
             activeTintColor: '#01579b',
             inactiveTintColor: '#fff',
             upperCaseLabel: false,
-            showIcon: true,
+            // showIcon: true,
             labelStyle: {
                 fontWeight: '900',
                 fontSize: 18
@@ -93,7 +93,6 @@ export default class Shop extends Component {
     openMenu = (route) => () => {
         this.props.navigation.navigate({ routeName: route });
     }
-
 
     render() {
         return (

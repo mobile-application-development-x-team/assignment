@@ -5,6 +5,7 @@ import Menu from './Menu';
 import Shop from './Shop/Shop';
 import { DrawerNavigator } from 'react-navigation';
 
+
 export default Route = DrawerNavigator(
     {
         Shop: {

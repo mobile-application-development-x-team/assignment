@@ -6,13 +6,16 @@ import {
 } from 'react-native';
 import global from '../global';
 import profileIcon from '../../media/temp/profile.png';
+import backSpecial from '../../media/appIcon/backs.png';
 
 export default class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = { user : {
-            name: 'Thach'
-        } };
+        this.state = {
+            user: {
+                name: 'Thach'
+            }
+        };
         global.onSignIn = this.onSignIn.bind(this);
     }
 
@@ -32,7 +35,7 @@ export default class Menu extends Component {
         const {
             container, profile, btnStyle, btnText,
             btnSignInStyle, btnTextSignIn, loginContainer,
-            username
+            username, backIconStyle
         } = styles;
 
         const logoutJSX = (
@@ -66,6 +69,9 @@ export default class Menu extends Component {
             <View style={container}>
                 <Image source={profileIcon} style={profile} />
                 {mainJSX}
+                <TouchableOpacity onPress={this.navigateToScreen('Shop')}>
+                    <Image source={backSpecial} style={backIconStyle} />
+                </TouchableOpacity>
             </View>
         );
     }
@@ -74,10 +80,10 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#03a9f4',
+        backgroundColor: '#4527a0',
         borderRightWidth: 2,
         borderColor: '#fff',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     profile: {
         width: 120,
@@ -95,20 +101,22 @@ const styles = StyleSheet.create({
     },
     btnText: {
         color: '#01579b',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: '600'
     },
     btnSignInStyle: {
         height: 50,
-        backgroundColor: '#fff',
-        borderRadius: 5,
-        width: 200,
+        backgroundColor: '#4527a0',
+        width: '100%',
         marginBottom: 10,
+        borderTopColor: '#fff',
+        borderBottomColor: '#fff',
+        // borderTopWidth: 1,
+        // borderBottomWidth: 1,
         justifyContent: 'center',
-        paddingLeft: 10
     },
     btnTextSignIn: {
-        color: '#01579b',
+        color: '#fff',
         fontSize: 20,
         fontWeight: '400'
     },
@@ -119,7 +127,14 @@ const styles = StyleSheet.create({
     },
     username: {
         color: '#fff',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: '900'
-    }
+    },
+    backIconStyle: { 
+        width: 40, 
+        height: 40,
+        marginLeft: 400,
+        marginBottom: 20
+
+    },
 });
