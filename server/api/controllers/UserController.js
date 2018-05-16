@@ -22,6 +22,7 @@ exports.registerUser = function (req, res) {
                 accessToken: token
             };
             res.header('x-auth', token).json(userRes);
+            res.end();
         }).catch((e) => {
             res.status(400).send(e);
         });
@@ -43,6 +44,7 @@ exports.login = function (req, res) {
                     accessToken: token
                 };
                 res.header('x-auth', token).send(userRes.accessToken);
+                res.end();
             });
         }).catch((e) => {
             res.status(400).send();
@@ -54,6 +56,7 @@ exports.getUser = function (req, res) {
         if (err)
             res.send(err);
         res.json(user);
+        res.end();
     });
 };
 
@@ -72,6 +75,7 @@ exports.updateUser = function (req, res) {
       if (err)
         res.send(err);
       res.json(user);
+      res.end();
     });
   };
   
