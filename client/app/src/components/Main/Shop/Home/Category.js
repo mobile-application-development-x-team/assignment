@@ -2,40 +2,50 @@ import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 
+import maxiImage from '../../../../media/temp/maxi.jpg';
+import partyImage from '../../../../media/temp/party.jpg';
+import miniImage from '../../../../media/temp/mini.jpg';
+import fitImage from '../../../../media/temp/fit.jpg';
+
 const { width } = Dimensions.get('window');
 
 export default class Category extends Component {
-    gotoListProduct(category) {
-        const { navigator } = this.props;
-        navigator.push({ name: 'LIST_PRODUCT', category });
-    }
     render() {
-        const { types } = this.props;
-        const { wrapper, textStyle, imageStyle, cateTitle } = styles;
-        const swiper = (
-            <Swiper showsPagination width={imageWidth} height={imageHeight} >
-                {/* { types.map(e => (
-                    <TouchableOpacity onPress={() => this.gotoListProduct(e)} key={e.id}>
-                        <Image source={{ uri: `${url}${e.image}` }} style={imageStyle}>
-                            <Text style={cateTitle}>{e.name}</Text>
-                        </Image>
-                    </TouchableOpacity>
-                )) } */}
-            </Swiper>
-        );
+        const { wrapper, textStyle, imageStyle } = styles;
         return (
             <View style={wrapper}>
-                <View style={{ justifyContent: 'center', height: 50 }}>
-                    <Text style={textStyle} >LIST OF CATEGORY</Text>
+                <View>
+                    <Text style={textStyle}>LIST OF CATEGORY</Text>
                 </View>
-                <View style={{ justifyContent: 'flex-end', flex: 4 }}>
-                    {/* { types.length ? swiper : null } */}
+                <View style={imageStyle}>
+                    <Swiper
+                        style={imageStyle}
+                        showsPagination={true}
+                        autoplay={true}
+                    >
+                        <Image
+                            source={maxiImage}
+                            style={imageStyle}
+                        />
+                        <Image
+                            source={partyImage}
+                            style={imageStyle}
+                        />
+                        <Image
+                            source={miniImage}
+                            style={imageStyle}
+                        />
+                        <Image
+                            source={fitImage}
+                            style={imageStyle}
+                        />
+                    </Swiper>
                 </View>
-            </View>
+            </View >
         );
     }
 }
-//933 x 465
+
 const imageWidth = width - 40;
 const imageHeight = imageWidth / 2;
 
@@ -44,26 +54,22 @@ const styles = StyleSheet.create({
         width: width - 20,
         backgroundColor: '#FFF',
         margin: 10,
-        justifyContent: 'space-between',
         shadowColor: '#2E272B',
         shadowOffset: { width: 0, height: 3 },
         shadowOpacity: 0.2,
         padding: 10,
-        paddingTop: 0
+        justifyContent: 'space-between'
     },
     textStyle: {
         fontSize: 20,
-        color: '#AFAEAF'
+        color: '#AFAEAF',
+        marginTop: 5,
+        marginBottom: 10,
+        fontWeight: '600',
+        paddingTop: 0
     },
     imageStyle: {
         height: imageHeight,
-        width: imageWidth,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    cateTitle: {
-        fontSize: 20,
-        fontFamily: 'Avenir',
-        color: '#9A9A9A'
+        width: imageWidth
     }
 });

@@ -51,7 +51,9 @@ exports.updateFavoritedJob = function (req, res) {
     Job.update({ _id: req.params.id }, {$set: {favorited: req.params.favorited}} , function (err, job) {
         if (err)
             res.send(err);
-        res.json(job);
-        res.end();
+        res.json({'msg': 'SUCCESS'}); 
+
+        res.end()
+
     });
 }

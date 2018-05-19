@@ -19,12 +19,15 @@ exports.registerUser = function (req, res) {
                 _id: new_user._id,
                 email: new_user.email,
                 name: new_user.name,
+                phone_number: new_user.phone_number,
                 accessToken: token
             };
-            res.header('x-auth', token).json(userRes);
+            res.header('x-auth', token)
+            res.json({'newUser': userRes, 'msg': 'SUCCESS'});
             res.end();
         }).catch((e) => {
-            res.status(400).send(e);
+            res.json({ 'newUser': null, 'msg': 'FAIL' });
+            res.end();
         });
 };
 
@@ -33,6 +36,7 @@ exports.login = function (req, res) {
     console.log('login');
 
     var body = _.pick(req.body, ['email', 'password']);
+    console.log(body);
     var user = new User(body);
     User.findByCredentials(user.email, user.password)
         .then((user) => {
@@ -41,13 +45,15 @@ exports.login = function (req, res) {
                     _id: user._id,
                     email: user.email,
                     name: user.name,
+                    phone_number: user.phone_number,
                     accessToken: token
                 };
-                res.header('x-auth', token).send(userRes.accessToken);
+                res.json({ 'user': userRes, 'msg': 'SUCCESS' });
                 res.end();
             });
         }).catch((e) => {
-            res.status(400).send();
+            res.json({ 'user': null, 'msg': 'FAIL' });
+            res.end();
         });
 };
 
@@ -62,21 +68,21 @@ exports.getUser = function (req, res) {
 
 exports.updateUser = function (req, res) {
     var id = req.params.userId;
-  
+
     if (!ObjectID.isValid(id)) {
-      return res.status(404).send();
+        return res.status(404).send();
     }
 
     var updatedUser = _.pick(req.body, ['name', 'address', 'phone_number']);
     if (updatedUser.password !== undefined) {
-      updatedUser.password = bcrypt.hashSync(updatedUser.password);
+        updatedUser.password = bcrypt.hashSync(updatedUser.password);
     }
     User.findOneAndUpdate({ _id: id }, updatedUser, { new: true }, function (err, user) {
-      if (err)
-        res.send(err);
-      res.json(user);
-      res.end();
+        if (err)
+            res.send(err);
+        res.json(user);
+        res.end();
     });
-  };
-  
+};
+
 

@@ -4,12 +4,12 @@ const _ = require('lodash');
 
 Product = require('../models/ProductModel');
 
-// GET all products
-exports.getListProducts = function (req, res) {
-    Product.find(function (err, products) {
+// GET new products
+exports.findNew = function (req, res) {
+    Product.find({"new": 1}, function (err, products) {
         if (err)
-            res.send(err);
-        res.send(products);
+            res.jon(err);
+        res.json(products);
         res.end();
     });
 };
@@ -18,8 +18,8 @@ exports.getListProducts = function (req, res) {
 exports.findProduct = function (req, res) {
     Product.findById(req.params.proID, function (err, product) {
         if (err)
-            res.send(err);
-        res.send(product);
+            res.json(err);
+        res.json(product);
         res.end();
     });
 };
@@ -30,9 +30,9 @@ exports.searchProducts = function (req, res) {
     console.log(key);
     Product.find({"color": new RegExp(key, "i")}, function (err, results) {
         if (err)
-            res.send(err);
+            res.json(err);
         console.log(results);
-        res.send(results);
+        res.json(results);
         res.end();
     });
 };
@@ -42,19 +42,29 @@ exports.findByIdType = function (req, res){
     var id_type = req.params.id_type;
     Product.find({id_type: id_type}, function(err, products){
         if(err)
-            res.send(err);
-        res.send(products);
+            res.json(err);
+        res.json(products);
         res.end();
     });
 };
+
+//GET products in Collection
+exports.findInCollection = function(req, res){
+    Product.find({"inCollection": 1}, function(err, products){
+        if(err)
+            res.json(err);
+        res.json(products);
+        res.end();
+    });
+}
 
 // CREATE product
 exports.createProduct = function (req, res) {
     var body = _.pick(req.body, ['_id', 'name', 'id_type', 'price', 'color', 'material', 'description', 'new', 'inCollection', 'images']);
     Product.create(body, function (err, product) {
         if (err)
-            res.send(err);
-        res.send({ "MESSAGE": "INSERTED PRODUCT" });
+            res.json(err);
+        res.json({ "MESSAGE": "INSERTED PRODUCT" });
         res.end();
     });
 };

@@ -1,4 +1,4 @@
-module.exports = {
+const global = {
     addProductToCart: null,
     incrQuantity: null,
     decrQuantity: null,
@@ -7,3 +7,5 @@ module.exports = {
     gotoSearch: null,
     setArraySearch: null
 };
+
+export default global;

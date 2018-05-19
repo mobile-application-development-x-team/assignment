@@ -14,6 +14,7 @@ export default class ChangeInfo extends Component {
     backShop = (route) => () => {
         this.props.navigation.navigate({ routeName: route });
     }
+    
     render() {
         const {
             wrapper, header, headerTitle, backIconStyle, body,

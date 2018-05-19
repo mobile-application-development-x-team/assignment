@@ -7,5 +7,5 @@ module.exports = function (app) {
     app.get(urlBase + '/search/place/:key', jobController.getListJobByPlace);
     app.get(urlBase + '/search/sub-title/:key', jobController.getListJobBySubKeyTitle);
     app.get(urlBase + '/favorited-jobs', jobController.getFavoriteJob);
-    app.post(urlBase  + '/favorited-job/:id/:favorited', jobController.updateFavoritedJob);
+    app.post(urlBase + '/favorited-job/:id/:favorited', jobController.updateFavoritedJob);
 }
