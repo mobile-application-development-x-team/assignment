@@ -5,15 +5,25 @@ import bannerImage from '../../../../media/temp/banner.jpg';
 const { width } = Dimensions.get('window');
 
 export default class Collection extends Component {
+    constructor(props) {
+        super(props);
+        this.listCollection = [];
+    }
+    gotoListProduct(listCollection) {
+        // this.props.navigation.navigate('ListProduct', { listCollection: listCollection });
+    }
     render() {
         const { wrapper, textStyle, imageStyle } = styles;
+        const navigationOptions = {
+            title: 'Collection',
+        }
         return (
             <View style={wrapper}>
                 <View>
                     <Text style={textStyle}>COLLECTION</Text>
                 </View>
-                <TouchableOpacity>
-                    <Image source={bannerImage} style={imageStyle}/>
+                <TouchableOpacity onPress={this.gotoListProduct.bind(this, this.listCollection)}>
+                    <Image source={bannerImage} style={imageStyle} />
                 </TouchableOpacity>
             </View>
         );

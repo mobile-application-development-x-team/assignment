@@ -6,18 +6,71 @@ import sp2 from '../../../../media/temp/sp2.jpeg';
 import sp3 from '../../../../media/temp/sp3.jpeg';
 import sp4 from '../../../../media/temp/sp4.jpeg';
 
+import URL from '../../../../configIP/config';
+
+const urlImage = '../../../../media/images/product/';
+
 export default class TopProduct extends Component {
+    constructor(props) {
+        super(props);
+        const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+        this.state = {
+            listProducts: ds
+        };
+        this.arr = [];
+        const { navigation } = this.props;
+    }
+
+    gotoProductDetail(product) {
+        // this.props.navigation.navigate('ProductDetail', { product: product });
+    }
+
+    static navigationOptions = {
+        title: 'TopProduct'
+    };
+
+    componentDidMount() {
+        return fetch(URL + '/new')
+            .then((res) => res.json())
+            .then((resJson) => {
+                this.arr = resJson;
+                this.setState({ listProducts: this.state.listProducts.cloneWithRows(this.arr) });
+            })
+            .catch((e) => {
+                console.error(e);
+            })
+    }
+
     render() {
         const { container, titleContainer, title,
             body, productContainer, productImage,
             productName, productPrice } = styles;
+        const navigationOptions = {
+            title: 'TopProduct',
+        }
         return (
             <View style={container}>
                 <View style={titleContainer}>
                     <Text style={title}>TOP PRODUCT</Text>
                 </View>
-                <View style={body}>
-                    <TouchableOpacity style={productContainer}>
+
+                <ListView
+                    contentContainerStyle={body}
+                    enableEmptySections
+                    dataSource={this.state.listProducts}
+                    renderRow={product => (
+                        <TouchableOpacity style={productContainer} onPress={() => {
+                            this.props.navigation.navigate('HomeView', { product: product });
+                        }}>
+                            <Image source={{ uri: `${urlImage}${product.images[0].link}` }} style={productImage} />
+                            <Text style={productName}>{product.name.toUpperCase()}</Text>
+                            <Text style={productPrice}>{product.price}$</Text>
+                        </TouchableOpacity>
+                    )}
+                />
+
+                {/* <View style={body}>
+                    <TouchableOpacity style={productContainer} onPress={this.gotoProductDetail.bind(this)}>
                         <Image source={sp1} style={productImage} />
                         <Text style={productName}>PRODUCT NAME</Text>
                         <Text style={productPrice}>PRODUCT PRICE</Text>
@@ -37,7 +90,7 @@ export default class TopProduct extends Component {
                         <Text style={productName}>PRODUCT NAME</Text>
                         <Text style={productPrice}>PRODUCT PRICE</Text>
                     </TouchableOpacity>
-                </View>
+                </View> */}
             </View>
 
         );

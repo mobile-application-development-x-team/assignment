@@ -6,6 +6,7 @@ Product = require('../models/ProductModel');
 
 // GET new products
 exports.findNew = function (req, res) {
+    console.log('GET TOP PRODUCT');
     Product.find({"new": 1}, function (err, products) {
         if (err)
             res.jon(err);
