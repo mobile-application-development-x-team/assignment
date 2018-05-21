@@ -153,7 +153,7 @@
 
         --- npm run android (run app on android device)
 
-        --- npm run ios  (run and on ios device)
+        --- npm run ios  (run app on ios device)
 
 
 
