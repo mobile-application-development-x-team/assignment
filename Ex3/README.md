@@ -59,6 +59,12 @@ members:
 #run project
 
 
+    -- update URL api:
+
+        -- check your IP and update at ~client/.../utils/Constant.java
+
+        
+
     -- starting server: 
 
 
