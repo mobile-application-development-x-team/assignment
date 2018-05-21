@@ -5,21 +5,52 @@ import {
 
 import backSpecial from '../../media/appIcon/backs.png';
 
+import URL from '../../configIP/config';
+
 StatusBar.setHidden(true);
 export default class ChangeInfo extends Component {
     constructor(props) {
         super(props);
+        // initial a user default to test feature
+        this.user = null;
+        this.state = {
+            txtName: '',
+            txtAddress: '',
+            txtPhone: ''
+        };
+
+        // initial a user ID to test feature
+        const _id = '5afafc5f02a8760b78547287';     // ID get from a user in MongoDB database
+
+        // this.getUser(this._id);
     }
 
     backShop = (route) => () => {
         this.props.navigation.navigate({ routeName: route });
     }
-    
+
+    getUser(id) {
+        return fetch(URL + '/users/' + id)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res);
+                this.setState({ txtName: res.name, txtAddress: res.address, txtPhone: res.phone_number });
+                this.user = { name: this.txtName, address: this.txtAddress, phone_number: this.txtPhone };
+            })
+            .catch(e => console.error(e));
+    }
+
+    changeInfo(id, user) {
+        console.log('change info');
+        console.log(user);
+    }
+
     render() {
         const {
             wrapper, header, headerTitle, backIconStyle, body,
             signInContainer, signInTextStyle, textInput
         } = styles;
+        const { txtName, txtPhone, txtAddress } = this.state
         return (
             <View style={wrapper}>
                 <View style={header}>
@@ -34,27 +65,27 @@ export default class ChangeInfo extends Component {
                         style={textInput}
                         placeholder="Enter your name"
                         autoCapitalize="none"
-                        value="Thach Chau Ngoc"
-                        // onChangeText={text => this.setState({ ...this.state, txtName: text })}
+                        value='User Name'
+                        onChangeText={text => this.setState({ txtName: text })}
                         underlineColorAndroid="transparent"
                     />
                     <TextInput
                         style={textInput}
                         placeholder="Enter your address"
                         autoCapitalize="none"
-                        value="Truong Chinh, Tan Binh, HCM"
-                        // onChangeText={text => this.setState({ ...this.state, txtAddress: text })}
+                        value="Tan Binh, Ho Chi Minh"
+                        onChangeText={text => this.setState({ txtAddress: text })}
                         underlineColorAndroid="transparent"
                     />
                     <TextInput
                         style={textInput}
                         placeholder="Enter your phone number"
                         autoCapitalize="none"
-                        value="01644431222"
-                        // onChangeText={text => this.setState({ ...this.state, txtPhone: text })}
+                        value="099999977"
+                        onChangeText={text => this.setState({ txtPhone: text })}
                         underlineColorAndroid="transparent"
                     />
-                    <TouchableOpacity style={signInContainer}>
+                    <TouchableOpacity style={signInContainer} >
                         <Text style={signInTextStyle}>CHANGE YOUR INFOMATION</Text>
                     </TouchableOpacity>
                 </View>

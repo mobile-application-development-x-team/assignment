@@ -14,11 +14,9 @@ export default class HomeView extends Component {
         title: 'Welcome',
       };
     render() {
+        
         return (
             <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
-                <Button
-                    onPress={() => this.props.navigation.navigate('ListProduct')} 
-                    title="LIST PRODUCT"/>
                 <Collection />
                 {/* <Category /> */}
                 <TopProduct />

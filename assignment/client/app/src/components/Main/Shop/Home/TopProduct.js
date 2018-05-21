@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions, Image, ListView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image, ListView, TouchableOpacity, ScrollView } from 'react-native';
 
 import sp1 from '../../../../media/temp/sp1.jpeg';
 import sp2 from '../../../../media/temp/sp2.jpeg';
@@ -9,6 +9,7 @@ import sp4 from '../../../../media/temp/sp4.jpeg';
 import URL from '../../../../configIP/config';
 
 const urlImage = '../../../../media/images/product/';
+
 
 export default class TopProduct extends Component {
     constructor(props) {
@@ -62,35 +63,36 @@ export default class TopProduct extends Component {
                         <TouchableOpacity style={productContainer} onPress={() => {
                             this.props.navigation.navigate('HomeView', { product: product });
                         }}>
-                            <Image source={{ uri: `${urlImage}${product.images[0].link}` }} style={productImage} />
+                            <Image source={{ uri: `${url}${product.images[0].link}` }} style={productImage} />
                             <Text style={productName}>{product.name.toUpperCase()}</Text>
                             <Text style={productPrice}>{product.price}$</Text>
                         </TouchableOpacity>
                     )}
                 />
-
-                {/* <View style={body}>
-                    <TouchableOpacity style={productContainer} onPress={this.gotoProductDetail.bind(this)}>
-                        <Image source={sp1} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>PRODUCT PRICE</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} >
-                        <Image source={sp2} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>PRODUCT PRICE</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} >
-                        <Image source={sp3} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>PRODUCT PRICE</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={productContainer} >
-                        <Image source={sp4} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>PRODUCT PRICE</Text>
-                    </TouchableOpacity>
-                </View> */}
+                {/* <ScrollView>
+                    <View style={body}>
+                        <TouchableOpacity style={productContainer} onPress={this.gotoProductDetail.bind(this)}>
+                            <Image source={sp1} style={productImage} />
+                            <Text style={productName}>PRODUCT NAME</Text>
+                            <Text style={productPrice}>PRODUCT PRICE</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={productContainer} >
+                            <Image source={sp2} style={productImage} />
+                            <Text style={productName}>PRODUCT NAME</Text>
+                            <Text style={productPrice}>PRODUCT PRICE</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={productContainer} >
+                            <Image source={sp3} style={productImage} />
+                            <Text style={productName}>PRODUCT NAME</Text>
+                            <Text style={productPrice}>PRODUCT PRICE</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={productContainer} >
+                            <Image source={sp4} style={productImage} />
+                            <Text style={productName}>PRODUCT NAME</Text>
+                            <Text style={productPrice}>PRODUCT PRICE</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView> */}
             </View>
 
         );

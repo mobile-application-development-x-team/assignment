@@ -4,7 +4,7 @@ const _ = require('lodash');
 
 Product = require('../models/ProductModel');
 
-// GET new products
+// GET top products
 exports.findNew = function (req, res) {
     console.log('GET TOP PRODUCT');
     Product.find({"new": 1}, function (err, products) {

@@ -58,6 +58,7 @@ exports.login = function (req, res) {
 };
 
 exports.getUser = function (req, res) {
+    console.log('GET USER BY _id: ' + req.params.userId);
     User.findById(req.params.userId, function (err, user) {
         if (err)
             res.send(err);
