@@ -1,6 +1,6 @@
 #assigment
 
-    Fashion Shop Online (version 1.0.0: only Male)
+    Fashion Shop Online (version 1.0.0: only Female)
 
 #infomation
 
