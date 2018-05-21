@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Find Job</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_job">Job</string>
+    <string name="title_save">Save</string>
+    <string name="title_search">Search</string>
+    <string name="title_profile">Profile</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete are you sure?</string>
+    <string name="delete_success">Delete success?</string>
+    <string name="not_job_save">No saved work </string>
+    <string name="not_connect">Not network connection </string>
+    <string name="name_job">Name Job </string>
+    <string name="place">Place Job</string>
+
+
+
+
+
+</resources>

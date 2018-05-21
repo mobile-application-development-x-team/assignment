@@ -25,10 +25,7 @@ members:
     --client
 
 
-        --findwork
-
-
-            -- ...
+        -- ...
 
 
     --server

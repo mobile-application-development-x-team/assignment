@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="key_search">
+        <item>@string/name_job</item>
+        <item>@string/place</item>
+    </array>
+</resources>

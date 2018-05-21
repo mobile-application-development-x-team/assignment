@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://E:\HK172\mobile-application-development\assignment\Ex3\client\findwork\FindWork.iml" filepath="E:\HK172\mobile-application-development\assignment\Ex3\client\findwork\FindWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\HK172\mobile-application-development\assignment\Ex3\client\findwork\app\app.iml" filepath="E:\HK172\mobile-application-development\assignment\Ex3\client\findwork\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/findwork.iml" filepath="$PROJECT_DIR$/findwork.iml" />
+    </modules>
+  </component>
+</project>
