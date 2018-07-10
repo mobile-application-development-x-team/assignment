@@ -5,6 +5,7 @@ var port = process.env.PORT || 3003;
 var bodyParser = require('body-parser');
 var cors = require('cors');
 
+// var url = 'your local url mongo db server';
 var url = 'mongodb://exercise:123456@ds249299.mlab.com:49299/exercise';
 
 mongoose.Promise = global.Promise;
